@@ -1,5 +1,7 @@
 ## bestit/harvest-api
 
+[![Build Status](https://travis-ci.org/bestit/harvest-api.svg?branch=master)](https://travis-ci.org/bestit/harvest-api)
+
 TODO
 
 ## Installation
