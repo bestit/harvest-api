@@ -1,0 +1,34 @@
+{
+    "name": "bestit/harvest-api",
+    "description": "Harvest API written in PHP, optimised for Laravel.",
+    "keywords": ["harvest", "laravel", "API"],
+    "type": "library",
+    "require": {
+        "php": "^7.0",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "illuminate/support": "^5.4",
+        "phpunit/phpunit": "^6.1",
+        "symfony/var-dumper": "^3.2",
+        "fzaninotto/faker": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "BestIt\\Harvest\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ahmad El-Bardan",
+            "email": "ahmad.el-bardan@bestit-online.de"
+        }
+    ],
+    "minimum-stability": "stable"
+}
