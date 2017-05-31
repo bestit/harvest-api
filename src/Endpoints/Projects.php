@@ -18,6 +18,7 @@ use Psr\Http\Message\ResponseInterface;
  *
  * @package BestIt\Harvest\Endpoints
  * @author Ahmad El-Bardan <ahmad.el-bardan@bestit-online.de>
+ * @author Marcel Thiesies <marcel.thiesies@bestit-online.de>
  */
 class Projects extends BaseEndpoint
 {
@@ -25,7 +26,6 @@ class Projects extends BaseEndpoint
      * Retrieve all projects.
      *
      * @return ProjectsModel
-     * @TODO: filters
      */
     public function all()
     {
