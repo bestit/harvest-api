@@ -48,16 +48,16 @@ class Projects extends BaseEndpoint
     }
 
     /**
-     * Retrieve a specific project by client id.
+     * Retrieve all projects by specific client id.
      *
      * @param $cid
-     * @return ProjectModel
+     * @return ProjectsModel
      */
     public function findByClientId($cid)
     {
         $response = $this->httpClient->get("/projects?client={$cid}");
 
-        return $this->projectModel($response);
+        return $this->projectsModel($response);
     }
 
     /**

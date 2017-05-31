@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Tests;
 
@@ -30,9 +30,104 @@ class TestCase extends BaseTestCase
      */
     protected function createHarvestClient(HandlerStack $handler)
     {
-        $client = new HttpClient('', '', '', ['handler' => $handler]);
+        return new HttpClient('', '', '', ['handler' => $handler]);
+    }
 
-        return $client;
+    protected function generateProject()
+    {
+        return [
+            'project' => [
+                'id' => $this->faker->numberBetween(),
+                'client_id' => $this->faker->numberBetween(),
+                'name' => $this->faker->name,
+                'code' => $this->faker->name,
+                'active' => $this->faker->boolean(),
+                'billable' => $this->faker->boolean(),
+                'bill_by' => $this->faker->shuffleString(),
+                'hourly_rate' => $this->faker->numberBetween(0, 200),
+                'budget' => $this->faker->numberBetween(0, 100000),
+                'budget_by' => $this->faker->name,
+                'notify_when_over_budget' => $this->faker->boolean(),
+                'over_budget_notification_percentage' => $this->faker->numberBetween(0, 100),
+                'over_budget_notified_at' => $this->faker->randomDigitNotNull,
+                'show_budget_to_all' => $this->faker->boolean(),
+                'created_at' => '2013-04-30T20 =>28 =>12Z',
+                'updated_at' => '2015-04-15T15 =>44 =>17Z',
+                'starts_on' => '2013-04-30',
+                'ends_on' => '2015-06-01',
+                'estimate' => $this->faker->numberBetween(0, 100000),
+                'estimate_by' => $this->faker->name,
+                'hint_earliest_record_at' => '2013-04-30',
+                'hint_latest_record_at' => '2014-12-09',
+                'notes' => $this->faker->words(5, false),
+                'cost_budget' => $this->faker->randomDigitNotNull,
+                'cost_budget_include_expenses' => $this->faker->boolean()
+            ]
+        ];
+    }
+
+    protected function generateProjects()
+    {
+        $projects = [
+            'project' => [
+                'id' => $this->faker->numberBetween(),
+                'client_id' => 123,
+                'name' => $this->faker->name,
+                'code' => $this->faker->name,
+                'active' => $this->faker->boolean(),
+                'billable' => $this->faker->boolean(),
+                'bill_by' => $this->faker->shuffleString(),
+                'hourly_rate' => $this->faker->numberBetween(0, 200),
+                'budget' => $this->faker->numberBetween(0, 100000),
+                'budget_by' => $this->faker->name,
+                'notify_when_over_budget' => $this->faker->boolean(),
+                'over_budget_notification_percentage' => $this->faker->numberBetween(0, 100),
+                'over_budget_notified_at' => $this->faker->randomDigitNotNull,
+                'show_budget_to_all' => $this->faker->boolean(),
+                'created_at' => '2013-04-30T20 =>28 =>12Z',
+                'updated_at' => '2015-04-15T15 =>44 =>17Z',
+                'starts_on' => '2013-04-30',
+                'ends_on' => '2015-06-01',
+                'estimate' => $this->faker->numberBetween(0, 100000),
+                'estimate_by' => $this->faker->name,
+                'hint_earliest_record_at' => '2013-04-30',
+                'hint_latest_record_at' => '2014-12-09',
+                'notes' => $this->faker->words(5, false),
+                'cost_budget' => $this->faker->randomDigitNotNull,
+                'cost_budget_include_expenses' => $this->faker->boolean()
+            ],
+            [
+                'project' => [
+                    'id' => $this->faker->numberBetween(),
+                    'client_id' => 123,
+                    'name' => $this->faker->name,
+                    'code' => $this->faker->name,
+                    'active' => $this->faker->boolean(),
+                    'billable' => $this->faker->boolean(),
+                    'bill_by' => $this->faker->shuffleString(),
+                    'hourly_rate' => $this->faker->numberBetween(0, 200),
+                    'budget' => $this->faker->numberBetween(0, 100000),
+                    'budget_by' => $this->faker->name,
+                    'notify_when_over_budget' => $this->faker->boolean(),
+                    'over_budget_notification_percentage' => $this->faker->numberBetween(0, 100),
+                    'over_budget_notified_at' => $this->faker->randomDigitNotNull,
+                    'show_budget_to_all' => $this->faker->boolean(),
+                    'created_at' => '2013-04-30T20 =>28 =>12Z',
+                    'updated_at' => '2015-04-15T15 =>44 =>17Z',
+                    'starts_on' => '2013-04-30',
+                    'ends_on' => '2015-06-01',
+                    'estimate' => $this->faker->numberBetween(0, 100000),
+                    'estimate_by' => $this->faker->name,
+                    'hint_earliest_record_at' => '2013-04-30',
+                    'hint_latest_record_at' => '2014-12-09',
+                    'notes' => $this->faker->words(5, false),
+                    'cost_budget' => $this->faker->randomDigitNotNull,
+                    'cost_budget_include_expenses' => $this->faker->boolean()
+                ]
+            ]
+        ];
+
+        return $projects;
     }
 
     protected function generateUser()
