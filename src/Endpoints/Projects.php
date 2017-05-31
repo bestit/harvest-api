@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace BestIt\Harvest\Endpoints;
 
@@ -45,6 +45,36 @@ class Projects extends BaseEndpoint
         $response = $this->httpClient->get("/projects/{$id}");
 
         return $this->projectModel($response);
+    }
+
+    /**
+     * Retrieve a specific project by client id.
+     *
+     * @param $cid
+     * @return ProjectModel
+     */
+    public function findByClientId($cid)
+    {
+        $response = $this->httpClient->get("/projects?client={$cid}");
+
+        return $this->projectModel($response);
+    }
+
+    /**
+    * Retrieve all projects updated since a given date.
+    *
+    * @param DateTime|null|string $updatedSince
+    * @return ProjectsModel $response
+    */
+    public function updatedSince(DateTime $updatedSince = null)
+    {
+        if ($updatedSince !== null) {
+            $updatedSince = Utils::dateTimeObjToHarvestTimeString($updatedSince);
+        }
+
+        $response = $this->httpClient->get("/projects?updated_since={$updatedSince}");
+
+        return $this->projectsModel($response);
     }
 
     /**
