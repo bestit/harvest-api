@@ -18,6 +18,7 @@ use Psr\Http\Message\ResponseInterface;
  *
  * @package BestIt\Harvest\Endpoints
  * @author Ahmad El-Bardan <ahmad.el-bardan@bestit-online.de>
+ * @author Marcel Thiesies <marcel.thiesies@bestit-online.de>
  */
 class Projects extends BaseEndpoint
 {
@@ -25,7 +26,6 @@ class Projects extends BaseEndpoint
      * Retrieve all projects.
      *
      * @return ProjectsModel
-     * @TODO: filters
      */
     public function all()
     {
@@ -45,6 +45,36 @@ class Projects extends BaseEndpoint
         $response = $this->httpClient->get("/projects/{$id}");
 
         return $this->projectModel($response);
+    }
+
+    /**
+     * Retrieve all projects by specific client id.
+     *
+     * @param $cid
+     * @return ProjectsModel
+     */
+    public function findByClientId($cid)
+    {
+        $response = $this->httpClient->get("/projects?client={$cid}");
+
+        return $this->projectsModel($response);
+    }
+
+    /**
+    * Retrieve all projects updated since a given date.
+    *
+    * @param DateTime|null|string $updatedSince
+    * @return ProjectsModel $response
+    */
+    public function updatedSince(DateTime $updatedSince = null)
+    {
+        if ($updatedSince !== null) {
+            $updatedSince = Utils::dateTimeObjToHarvestTimeString($updatedSince);
+        }
+
+        $response = $this->httpClient->get("/projects?updated_since={$updatedSince}");
+
+        return $this->projectsModel($response);
     }
 
     /**
