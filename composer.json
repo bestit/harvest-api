@@ -30,5 +30,15 @@
             "email": "ahmad.el-bardan@bestit-online.de"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BestIt\\Harvest\\HarvestServiceProvider"
+            ],
+            "aliases": {
+                "Harvest": "BestIt\\Harvest\\Facade\\Harvest"
+            }
+        }
+    }    
 }
