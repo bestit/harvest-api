@@ -5,6 +5,7 @@ namespace BestIt\Harvest\Endpoints;
 use BestIt\Harvest\Models\Reports\DayEntries as DayEntriesModel;
 use BestIt\Harvest\Models\Users\User as UserModel;
 use BestIt\Harvest\Models\Users\Users as UsersModel;
+use BestIt\Harvest\Utils\Utils;
 use DateTime;
 use Psr\Http\Message\ResponseInterface;
 
@@ -13,18 +14,21 @@ use Psr\Http\Message\ResponseInterface;
  *
  * @package BestIt\Harvest\Endpoints
  * @author Ahmad El-Bardan <ahmad.el-bardan@bestit-online.de>
+ * @author Marcel Thiesies <marcel.thiesies@bestit-online.de>
  */
 class Users extends BaseEndpoint
 {
     /**
      * Retrieve all users.
      *
+     * @param DateTime|null $updatedSince
      * @return UsersModel
-     * @TODO: filters
      */
-    public function all()
+    public function all(DateTime $updatedSince = null)
     {
-        $response = $this->httpClient->get('/people');
+        $uri = '/people';
+
+        $response = $this->httpClient->get(Utils::appendUpdatedSinceToUri($uri, $updatedSince));
 
         return $this->usersModel($response);
     }
