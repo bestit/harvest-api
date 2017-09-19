@@ -4,6 +4,8 @@ namespace BestIt\Harvest\Endpoints;
 
 use BestIt\Harvest\Models\Tasks\Task as TaskModel;
 use BestIt\Harvest\Models\Tasks\Tasks as TasksModel;
+use BestIt\Harvest\Utils\Utils;
+use DateTime;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -17,12 +19,14 @@ class Tasks extends BaseEndpoint
     /**
      * Retrieve all tasks.
      *
+     * @param DateTime|null $updatedSince
      * @return TasksModel
-     * @TODO: updated_since
      */
-    public function all()
+    public function all(DateTime $updatedSince = null)
     {
-        $response = $this->httpClient->get('/tasks');
+        $uri = '/tasks';
+
+        $response = $this->httpClient->get(Utils::appendUpdatedSinceToUri($uri, $updatedSince));
 
         return $this->tasksModel($response);
     }
