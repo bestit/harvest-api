@@ -79,9 +79,7 @@ class Timesheet extends BaseEndpoint
         ]);
 
         $response = $this->httpClient->post($uri, [
-            'json' => [
-                $dayEntry->toArray()
-            ]
+            'json' => $dayEntry->toArray()
         ]);
 
         return $this->dayEntryModel($response);
@@ -101,9 +99,7 @@ class Timesheet extends BaseEndpoint
         ]);
 
         $this->httpClient->post($uri, [
-            'json' => [
-                $dayEntry->toArray()
-            ]
+            'json' => $dayEntry->toArray()
         ]);
 
         return $this->find($dayEntry->id);
