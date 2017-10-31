@@ -68,7 +68,7 @@ $users = Harvest::users()->all();
 require_once __DIR__ . '/vendor/autoload.php';
 
 $url = 'https://company.harvestapp.com';
-$username = 'some@email.com'
+$username = 'some@email.com';
 $password = 'password';
 
 $client = new \BestIt\Harvest\Client($url, $username, $password);
