@@ -2,22 +2,16 @@
 
 namespace BestIt\Harvest;
 
-use BestIt\Harvest\Endpoints\Contacts;
-use BestIt\Harvest\Endpoints\Clients;
-use BestIt\Harvest\Endpoints\Expenses;
-use BestIt\Harvest\Endpoints\Projects;
-use BestIt\Harvest\Endpoints\Tasks;
-use BestIt\Harvest\Endpoints\Timesheet;
-use BestIt\Harvest\Endpoints\Users;
+use BestIt\Harvest\Endpoint\Contacts;
+use BestIt\Harvest\Endpoint\Clients;
+use BestIt\Harvest\Endpoint\Expenses;
+use BestIt\Harvest\Endpoint\Projects;
+use BestIt\Harvest\Endpoint\Tasks;
+use BestIt\Harvest\Endpoint\Timesheet;
+use BestIt\Harvest\Endpoint\Users;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\ClientInterface;
 
-/**
- * Class Client
- *
- * @package BestIt\Harvest
- * @author Ahmad El-Bardan <ahmad.el-bardan@bestit-online.de>
- */
 class Client
 {
     /** @var HttpClient|ClientInterface $httpClient */
@@ -37,29 +31,20 @@ class Client
     /** @var Projects $projects */
     private $projects;
 
-    /**
-     * Client constructor.
-     *
-     * @param string $url
-     * @param string $username
-     * @param string $password
-     * @param array $guzzleOptions
-     * @param ClientInterface|null $httpClient
-     */
     public function __construct(
-        $url,
-        $username,
-        $password,
+        int $accountId,
+        string $token,
         array $guzzleOptions = [],
         ClientInterface $httpClient = null
     ) {
         $defaultOptions = [
-            'base_uri' => rtrim($url, '/'),
+            'base_uri' => 'https://api.harvestapp.com/v2/',
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-            ],
-            'auth' => [$username, $password]
+                'Authorization' => "Bearer {$token}",
+                'Harvest-Account-Id' => $accountId
+            ]
         ];
 
         $options = array_merge($defaultOptions, $guzzleOptions);
@@ -68,7 +53,7 @@ class Client
     }
 
     /**
-     * @return \BestIt\Harvest\Endpoints\Clients
+     * @return \BestIt\Harvest\Endpoint\Clients
      */
     public function clients()
     {
@@ -80,7 +65,7 @@ class Client
     }
 
     /**
-     * @return \BestIt\Harvest\Endpoints\Users
+     * @return \BestIt\Harvest\Endpoint\Users
      */
     public function users()
     {
@@ -92,7 +77,7 @@ class Client
     }
 
     /**
-     * @return \BestIt\Harvest\Endpoints\Tasks
+     * @return \BestIt\Harvest\Endpoint\Tasks
      */
     public function tasks()
     {
@@ -104,7 +89,7 @@ class Client
     }
 
     /**
-     * @return \BestIt\Harvest\Endpoints\Timesheet
+     * @return \BestIt\Harvest\Endpoint\Timesheet
      */
     public function timesheet()
     {
@@ -116,7 +101,7 @@ class Client
     }
 
     /**
-     * @return \BestIt\Harvest\Endpoints\Contacts
+     * @return \BestIt\Harvest\Endpoint\Contacts
      */
     public function contacts()
     {
@@ -128,7 +113,7 @@ class Client
     }
 
     /**
-     * @return \BestIt\Harvest\Endpoints\Expenses
+     * @return \BestIt\Harvest\Endpoint\Expenses
      */
     public function expenses()
     {
@@ -140,7 +125,7 @@ class Client
     }
 
     /**
-     * @return \BestIt\Harvest\Endpoints\Projects
+     * @return \BestIt\Harvest\Endpoint\Projects
      */
     public function projects()
     {

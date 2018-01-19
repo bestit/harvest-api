@@ -1,0 +1,9 @@
+{
+  "id":5735776,
+  "name":"123 Industries",
+  "is_active":true,
+  "address":"123 Main St.\r\nAnytown, LA 71223",
+  "created_at":"2017-06-26T21:02:12Z",
+  "updated_at":"2017-06-26T21:34:11Z",
+  "currency":"EUR"
+}

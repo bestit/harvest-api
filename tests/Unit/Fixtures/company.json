@@ -1,0 +1,18 @@
+{
+  "base_uri": "https://test.harvestapp.com",
+  "full_domain": "test.harvestapp.com",
+  "name": "API Examples",
+  "is_active": true,
+  "week_start_day": "Monday",
+  "wants_timestamp_timers": false,
+  "time_format": "hours_minutes",
+  "plan_type": "trial",
+  "expense_feature": true,
+  "invoice_feature": true,
+  "estimate_feature": false,
+  "approval_feature": false,
+  "clock": "12h",
+  "decimal_symbol": ",",
+  "thousands_separator": ".",
+  "color_scheme": "orange"
+}

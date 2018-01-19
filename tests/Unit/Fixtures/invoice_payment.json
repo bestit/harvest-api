@@ -1,0 +1,15 @@
+{
+  "id": 10336386,
+  "amount": 1575.86,
+  "paid_at": "2017-07-24T13:32:18Z",
+  "recorded_by": "Jane Bar",
+  "recorded_by_email": "jane@example.com",
+  "notes": "Paid by phone",
+  "transaction_id": null,
+  "created_at": "2017-07-28T14:42:44Z",
+  "updated_at": "2017-07-28T14:42:44Z",
+  "payment_gateway": {
+    "id": null,
+    "name": null
+  }
+}

@@ -78,7 +78,3 @@ $users = $client->users()->all();
 
 // For more examples check the ./examples directory.
 ```
-
-### Todo
-- Tests (perhaps use mockable.io?)
-- Cover all endpoints
