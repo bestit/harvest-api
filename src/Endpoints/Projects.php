@@ -87,7 +87,7 @@ class Projects extends BaseEndpoint
     {
         $this->httpClient->post('/projects', [
             'json' => [
-                'project' => $project->toArray()
+                'project' => array_filter($project->toArray())
             ]
         ]);
 
