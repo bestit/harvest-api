@@ -49,7 +49,7 @@ class Clients extends BaseEndpoint
     {
         $response = $this->httpClient->post('/clients', [
             'json' => [
-                'client' => $client->toArray()
+                'client' => array_filter($client->toArray())
             ]
         ]);
 
@@ -66,7 +66,7 @@ class Clients extends BaseEndpoint
     {
         $response = $this->httpClient->put("/clients/{$client->id}", [
             'json' => [
-                'client' => $client->toArray()
+                'client' => array_filter($client->toArray())
             ]
         ]);
 
